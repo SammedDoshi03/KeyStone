@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "259918054518",
+    "project_id": "keystone-f4637",
+    "storage_bucket": "keystone-f4637.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:259918054518:android:95e7b7d9f38a3617ef0b57",
+        "android_client_info": {
+          "package_name": "com.keystone"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBoq8MzLhd-BAd3yDoKeQ2XhY1ulIFi5Kc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

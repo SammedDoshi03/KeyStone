@@ -1,0 +1,4 @@
+export const ActionTypes = {
+    SET_INTRO_SCREEN: 'SET_INTRO_SCREEN',
+    HIDE_INTRO_SCREEN: 'HIDE_INTRO_SCREEN',
+};
