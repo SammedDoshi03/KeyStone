@@ -1,0 +1,10 @@
+{
+  "login": {
+    "title": "Connectez-vous pour commencer",
+    "subtitle": "Entrez votre identifiant de messagerie d'entreprise et votre mot de passe pour vous connecter",
+    "emailLabel": "ID de messagerie Capgemini",
+    "passwordLabel": "Mot de passe",
+    "forgotPassword": "Mot de passe oublié?",
+    "signInButton": "Se connecter"
+  }
+}

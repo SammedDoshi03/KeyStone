@@ -1,6 +1,6 @@
 import {Alert,Modal,StatusBar,Text,ToastAndroid,TouchableOpacity,View,} from 'react-native';
 import React, {useEffect, useState} from 'react';
-import CustomButton from '../../components/CustomButton';
+import CustomButton from '../../components/atoms/custom-button';
 import RemoveSpocModal from '../../components/RemoveSpocModal';
 import {getSPOC, updateSPOC} from '../../firebase/manageSpoc';
 import {

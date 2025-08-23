@@ -8,9 +8,9 @@ import {
   View,
 } from 'react-native';
 import React, { useEffect, useRef, useState } from 'react';
-import CustomTextInput from '../../components/CustomTextInput';
+import CustomTextInput from '../../components/atoms/custom-text-input';
 import CustomCategoryModal from '../../components/CustomCategoryModal';
-import CustomButton from '../../components/CustomButton';
+import CustomButton from '../../components/atoms/custom-button';
 import { useIsFocused } from '@react-navigation/native';
 import { SelectCategoryStyles } from '../../styles/screens/SpocStyleSheet';
 import { useDispatch, useSelector } from 'react-redux';

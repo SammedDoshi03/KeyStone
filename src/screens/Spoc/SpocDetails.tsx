@@ -1,6 +1,6 @@
 import { FlatList, ScrollView, StatusBar, Text, View, Image, ToastAndroid, Alert } from 'react-native'
 import React, {useEffect, useRef, useState} from 'react';
-import CustomButton from '../../components/CustomButton';
+import CustomButton from '../../components/atoms/custom-button';
 import {useDispatch, useSelector} from 'react-redux';
 import {removeUser, logout} from '../../redux/reducers/userReducer';
 import {SpocDetailsStyles} from '../../styles/screens/SpocStyleSheet';

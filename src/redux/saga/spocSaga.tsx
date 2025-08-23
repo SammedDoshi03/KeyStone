@@ -4,7 +4,6 @@ import displayAllCategories, {
   displayAllSubCategories,
 } from '../../firebase/category';
 import {
-  filterByLocation,
   getDetails,
   getSPOC,
   getSPOCAmount,
@@ -16,7 +15,6 @@ import {
 import {
   addSpocSuccess,
   fetchSpocAmountSuccess,
-  fetchSpocByLocationSuccess,
   fetchSpocDetailsSuccess,
   fetchSpocSuccess,
 } from '../reducers/spocReducer';
@@ -38,13 +36,6 @@ function* workFetchSpocAmount() {
     return getSPOCAmount();
   });
   yield put(fetchSpocAmountSuccess(res));
-}
-
-function* workFetchSpocByLocation({ payload }) {
-  const res = yield call(() => {
-    return filterByLocation(payload.location);
-  });
-  yield put(fetchSpocByLocationSuccess(res));
 }
 
 function* workFetchSpoc({ payload }) {
@@ -81,8 +72,6 @@ function* spocSaga() {
   yield takeEvery('spoc/addSpoc', workAddSpoc);
 
   yield takeEvery('spoc/fetchSpocAmount', workFetchSpocAmount);
-  //@ts-ignore
-  yield takeEvery('spoc/fetchSpocByLocation', workFetchSpocByLocation);
   //@ts-ignore
   yield takeEvery('spoc/fetchSpoc', workFetchSpoc);
   //@ts-ignore

@@ -1,6 +1,6 @@
 import { Alert, FlatList, ScrollView, StatusBar, Text, ToastAndroid, View } from 'react-native'
 import React, {useEffect, useRef, useState} from 'react';
-import CustomButton from '../../components/CustomButton';
+import CustomButton from '../../components/atoms/custom-button';
 import CustomDatepicker from '../../components/CustomDatePicker';
 import {AssignassetconfirmationStyles} from '../../styles/screens/SpocStyleSheet';
 import {useDispatch, useSelector} from 'react-redux';

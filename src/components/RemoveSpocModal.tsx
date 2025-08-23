@@ -3,7 +3,7 @@ import { StyleSheet, View, Text, Image, TouchableOpacity, KeyboardAvoidingView, 
 import { removeSPOC } from "../firebase/manageSpoc";
 import { HelperText, TextInput } from 'react-native-paper'
 import Config from '../Utils/config.json'
-import CustomButton from "./CustomButton";
+import CustomButton from "../atoms/custom-button";
 import Icon from 'react-native-vector-icons/Feather';
 import { useEffect, useState } from "react";
 import { HEIGHT } from "../Utils/dimension";

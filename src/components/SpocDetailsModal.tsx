@@ -2,7 +2,7 @@ import * as React from "react";
 import { useEffect, useState } from "react";
 import { StyleSheet, View, Text, Image, TouchableOpacity, KeyboardAvoidingView, Dimensions, } from "react-native";
 import { getDetails, getSPOC } from "../firebase/manageSpoc";
-import CustomButton from "./CustomButton";
+import CustomButton from "../atoms/custom-button";
 import Icon from 'react-native-vector-icons/Feather';
 
 type EmpModalProps = {

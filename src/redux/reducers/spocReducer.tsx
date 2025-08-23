@@ -1,4 +1,13 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import { filterByLocation } from '../../firebase/manageSpoc';
+
+export const fetchSpocByLocationAsync = createAsyncThunk(
+  'spoc/fetchSpocByLocation',
+  async (location: string) => {
+    const response = await filterByLocation(location);
+    return response;
+  },
+);
 
 export const spoc = createSlice({
   name: 'spoc',
@@ -35,16 +44,6 @@ export const spoc = createSlice({
     fetchSpocAmountFailure: state => {
       state.isLoading = false;
     },
-    fetchSpocByLocation: state => {
-      state.isLoading = true;
-    },
-    fetchSpocByLocationSuccess: (state, action) => {
-      state.manageSpocData = action.payload;
-      state.isLoading = false;
-    },
-    fetchSpocByLocationFailure: state => {
-      state.isLoading = false;
-    },
     fetchSpoc: state => {
       state.isLoading = true;
     },
@@ -73,6 +72,19 @@ export const spoc = createSlice({
       state.spocSingleData = [];
     },
   },
+  extraReducers: builder => {
+    builder
+      .addCase(fetchSpocByLocationAsync.pending, state => {
+        state.isLoading = true;
+      })
+      .addCase(fetchSpocByLocationAsync.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.manageSpocData = action.payload;
+      })
+      .addCase(fetchSpocByLocationAsync.rejected, state => {
+        state.isLoading = false;
+      });
+  },
 });
 
 // Action creators are generated for each case reducer function
@@ -84,9 +96,6 @@ export const {
   fetchSpocAmount,
   fetchSpocAmountSuccess,
   fetchSpocAmountFailure,
-  fetchSpocByLocation,
-  fetchSpocByLocationSuccess,
-  fetchSpocByLocationFailure,
   fetchSpoc,
   fetchSpocSuccess,
   fetchSpocFailure,

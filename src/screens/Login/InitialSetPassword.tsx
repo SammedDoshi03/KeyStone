@@ -1,6 +1,6 @@
 import React, { useState } from "react"
 import { View, Text, ScrollView, StatusBar, Alert, ActivityIndicator, ImageBackground } from "react-native"
-import CustomButton from "../../components/CustomButton"
+import CustomButton from "../../components/atoms/custom-button"
 import CustomPasswordTextInput from "../../components/CustomPasswordTextInput"
 import { useSelector } from "react-redux"
 import { passUpdate } from "../../firebase/authentication"

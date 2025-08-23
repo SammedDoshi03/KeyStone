@@ -1,5 +1,5 @@
 import React, {useEffect, useRef, useState} from 'react';
-import CustomButton from '../../components/CustomButton';
+import CustomButton from '../../components/atoms/custom-button';
 import {useDispatch, useSelector} from 'react-redux';
 import AdminHomeStylesSheet from '../../styles/screens/AdminStyleSheet';
 import {fetchUser, purgeUserData} from '../../redux/reducers/userDataReducer';

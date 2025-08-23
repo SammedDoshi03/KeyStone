@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { StyleSheet, View, Text, Image, TouchableOpacity, KeyboardAvoidingView, Dimensions, Alert, ToastAndroid, } from "react-native";
 import { addRequest } from "../firebase/assets";
 import AddCommentInput from "./AddCommentsInput";
-import CustomButton from "./CustomButton";
+import CustomButton from "../atoms/custom-button";
 import Icon from 'react-native-vector-icons/Feather';
 import Config from '../Utils/config.json'
 
