@@ -1,6 +1,7 @@
 import { Text, View, Image, StatusBar, Dimensions } from 'react-native'
 import React from 'react'
-import CustomButton from '../../components/CustomButton'
+import CustomButton from '../../components/atoms/custom-button'
+import IntroLogo from '../../components/atoms/icons/intro-logo'
 import { introHandle } from '../../redux/reducers/userReducer'
 import { useDispatch,useSelector } from "react-redux"
 import { IntroScreenStyles } from '../../styles/screens/LoginStyleSheet'
@@ -15,7 +16,7 @@ const IntroScreen = ({navigation}:any) => {
         <View style={IntroScreenStyles.container}>
             <StatusBar backgroundColor='#3274AB' hidden={false} />
             <View>
-                <Image style={IntroScreenStyles.image} source={require('../../assets/IntroLogo.png')} />
+                <IntroLogo style={IntroScreenStyles.image} />
             </View>
             <View style={IntroScreenStyles.heading1}>
                 <Text style={IntroScreenStyles.text1}>Welcome to Assets Management System</Text>

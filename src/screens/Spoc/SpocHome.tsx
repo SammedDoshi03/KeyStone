@@ -2,7 +2,7 @@ import { useIsFocused } from "@react-navigation/native";
 import React, { useEffect, useState } from "react";
 import { View, Text, Dimensions, BackHandler } from "react-native";
 import CustomAssetCount from "../../components/CustomAssetCount";
-import CustomButton from "../../components/CustomButton";
+import CustomButton from "../../components/atoms/custom-button";
 import HomeSpocSkeletonScreen from "./HomeSpocSkeletonScreen";
 import { SpocHomeStyles } from "../../styles/screens/SpocStyleSheet";
 import notifee from '@notifee/react-native';

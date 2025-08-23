@@ -1,7 +1,7 @@
 import { Text, View, StatusBar, Modal, Alert } from 'react-native'
 import React, { useState } from 'react'
-import CustomSearch from '../../components/CustomSearch'
-import CustomButton from '../../components/CustomButton'
+import CustomSearch from '../../components/molecules/custom-search'
+import CustomButton from '../../components/atoms/custom-button'
 import { Searchbar } from 'react-native-paper'
 import { SearchEmpStyles } from '../../styles/screens/SpocStyleSheet'
 

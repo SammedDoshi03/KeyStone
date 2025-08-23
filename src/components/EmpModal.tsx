@@ -1,7 +1,7 @@
 import * as React from "react";
 import { StyleSheet, View, Text, Image, TouchableOpacity, KeyboardAvoidingView, Dimensions, Alert, } from "react-native";
 import AddCommentInput from "./AddCommentsInput";
-import CustomButton from "./CustomButton";
+import CustomButton from "../atoms/custom-button";
 
 type EmpModalProps = {
     changeModalVisibility: (bool: boolean) => void;

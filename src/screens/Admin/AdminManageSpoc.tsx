@@ -1,43 +1,70 @@
-import {useIsFocused} from '@react-navigation/native';
-import React, {useEffect, useState} from 'react';
-import {View,Text,Modal,TouchableOpacity,StatusBar,Image,} from 'react-native';
-import CustomButton from '../../components/CustomButton';
+import React, {useState, useCallback} from 'react';
+import {
+  View,
+  Text,
+  Modal,
+  TouchableOpacity,
+  StatusBar,
+  Image,
+  FlatList,
+} from 'react-native';
+import CustomButton from '../../components/atoms/custom-button';
 import CustomModal from '../../components/CustomModal';
 import CustomSpocList from '../../components/CustomSpocList';
-import ListComponet, {TitleTextSkeleton,} from '../../components/SkeletonComonents';
+import ListComponet, {
+  TitleTextSkeleton,
+} from '../../components/SkeletonComonents';
 import Config from '../../Utils/config.json';
 import AdminHomeStylesSheet from '../../styles/screens/AdminStyleSheet';
-import {useDispatch, useSelector} from 'react-redux';
-import {fetchSpocByLocation} from '../../redux/reducers/spocReducer';
+import {useFetchSpocs} from '../../hooks/useFetchSpocs';
+
+const MemoizedCustomSpocList = React.memo(CustomSpocList);
 
 const AdminManageSpoc = ({navigation, route}: any) => {
-  const [location, setlocation] = useState(route.params.location);
+  const {
+    response,
+    isLoading,
+    location,
+    setLocation,
+    setIsLoading,
+  } = useFetchSpocs(route.params.location);
   const [isModalVisible, setisModalVisible] = useState(false);
-  const [isLoading, setIsLoading] = useState(true);
-  const isFocused = useIsFocused();
   const AdminManageSpocStyles = AdminHomeStylesSheet().AdminManageSpocStyles;
-  //@ts-ignore
-  const response = useSelector(state => state.spoc.manageSpocData);
-  const dispatch = useDispatch();
 
   const changeModalVisibility = (bool: boolean) => {
     setisModalVisible(bool);
   };
 
   const setData = (option: string) => {
-    setlocation(option);
+    setLocation(option);
     setIsLoading(true);
   };
 
-  const fetchMyAPI = () => {
-    //@ts-ignore
-    dispatch(fetchSpocByLocation({location}));
-    setIsLoading(false);
-  };
+  const handleNavigateToViewSpoc = useCallback(
+    item => {
+      navigation.navigate('ViewSpoc', {item});
+    },
+    [navigation],
+  );
 
-  useEffect(() => {
-    fetchMyAPI();
-  }, [location, isFocused, isLoading]);
+  const renderItem = ({item}) => (
+    <MemoizedCustomSpocList
+      key={item.email}
+      email={item.email}
+      name={item.name}
+      startDate={item.startDate.toDate().toLocaleDateString('en-US', {
+        year: 'numeric',
+        month: 'short',
+        day: 'numeric',
+      })}
+      endDate={item.endDate.toDate().toLocaleDateString('en-US', {
+        year: 'numeric',
+        month: 'short',
+        day: 'numeric',
+      })}
+      onPress={() => handleNavigateToViewSpoc(item)}
+    />
+  );
 
   return !isLoading ? (
     response === null ? (
@@ -94,27 +121,11 @@ const AdminManageSpoc = ({navigation, route}: any) => {
           Number of SPOC : {response.length}
         </Text>
         <View style={AdminManageSpocStyles.line}></View>
-        {response.map(item => {
-          return (
-            <CustomSpocList
-              key={item.email}
-              email={item.email}
-              name={item.name}
-              startDate={item.startDate.toDate().toLocaleDateString('en-US', {
-                year: 'numeric',
-                month: 'short',
-                day: 'numeric',
-              })}
-              endDate={item.endDate.toDate().toLocaleDateString('en-US', {
-                year: 'numeric',
-                month: 'short',
-                day: 'numeric',
-              })}
-              onPress={() =>
-                navigation.navigate('ViewSpoc', {item})
-              }></CustomSpocList>
-          );
-        })}
+        <FlatList
+          data={response}
+          renderItem={renderItem}
+          keyExtractor={item => item.email}
+        />
         <Modal
           transparent={true}
           animationType="slide"

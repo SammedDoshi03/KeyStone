@@ -1,5 +1,6 @@
 import { StyleSheet } from 'react-native';
 import { HEIGHT, WIDTH } from '../../Utils/dimension';
+import { theme } from '../../theme/theme';
 
 export const InitialSetPasswordStyles = StyleSheet.create({
   container: {
@@ -89,12 +90,7 @@ export const IntroScreenStyles = StyleSheet.create({
 export const LoginScreenStyles = StyleSheet.create({
   container: {
     flex: 1,
-    // paddingTop:50,
-    // paddingHorizontal:20,
-    // width:WIDTH,
-    // height:"100%",
-    backgroundColor: '#FFFFFF',
-    //backgroundColor: 'transparent',
+    backgroundColor: theme.colors.background,
   },
   background: {
     flex: 1,
@@ -105,31 +101,30 @@ export const LoginScreenStyles = StyleSheet.create({
   },
 
   headertext: {
-    fontSize: 40,
-    color: 'black',
+    fontSize: theme.typography.h0.fontSize,
+    fontWeight: theme.typography.h0.fontWeight,
+    color: theme.colors.text,
     marginTop: HEIGHT / 9,
     marginBottom: HEIGHT / 18,
-    fontWeight: '400',
     textAlign: 'center',
   },
 
   text: {
-    fontWeight: '300',
-    color: 'black',
-    fontSize: 20,
+    fontSize: theme.typography.h2.fontSize,
+    fontWeight: theme.typography.h2.fontWeight,
+    color: theme.colors.text,
     width: WIDTH / 1.2,
     textAlign: 'center',
   },
   button: {
-    //flex: 1,
     justifyContent: 'flex-end',
-    marginBottom: 10,
+    marginBottom: theme.spacing.m,
   },
   fpText: {
     textAlign: 'center',
-    color: '#000000',
-    fontSize: 18,
-    fontWeight: '600',
+    color: theme.colors.text,
+    fontSize: theme.typography.body.fontSize,
+    fontWeight: theme.typography.body.fontWeight,
     marginTop: HEIGHT / 30,
     marginBottom: HEIGHT / 30,
     textDecorationLine: 'underline',
@@ -141,7 +136,7 @@ export const LoginScreenStyles = StyleSheet.create({
   },
 
   error: {
-    marginLeft: 20,
-    color: 'red',
+    marginLeft: theme.spacing.xl,
+    color: theme.colors.error,
   },
 });

@@ -1,0 +1,10 @@
+{
+  "login": {
+    "title": "Signin to get started",
+    "subtitle": "Enter Your Corp email id and password to signin",
+    "emailLabel": "Capgemini Mail ID",
+    "passwordLabel": "Password",
+    "forgotPassword": "Forgot Password?",
+    "signInButton": "Sign In"
+  }
+}

@@ -1,8 +1,8 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { View, Text, StatusBar, Alert } from 'react-native';
-import CustomButton from '../../components/CustomButton';
+import CustomButton from '../../components/atoms/custom-button';
 import CustomDatePicker from '../../components/CustomDatePicker';
-import CustomTextInput from '../../components/CustomTextInput';
+import CustomTextInput from '../../components/atoms/custom-text-input';
 import Config from '../../Utils/config.json';
 import Admin from '../../styles/screens/AdminStyleSheet';
 import { useDispatch, useSelector } from 'react-redux';

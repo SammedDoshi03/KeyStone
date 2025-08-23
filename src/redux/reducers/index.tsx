@@ -7,6 +7,7 @@ import { spoc } from './spocReducer';
 import { asset } from './assetReducer';
 import { auth } from './authReducer';
 import { categoryData } from './categoryReducer';
+import themeReducer from './themeSlice';
 
 export const rootReducer = combineReducers({
   login: user.reducer,
@@ -17,4 +18,5 @@ export const rootReducer = combineReducers({
   auth: auth.reducer,
   config: config.reducer,
   category: categoryData.reducer,
+  theme: themeReducer,
 });

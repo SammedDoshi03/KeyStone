@@ -8,11 +8,12 @@ import {
   StatusBar,
   ImageBackground,
 } from 'react-native';
-import CustomTextInput from '../../components/CustomTextInput';
-import CustomButton from '../../components/CustomButton';
-import CustomPasswordTextInput from '../../components/CustomPasswordTextInput';
+import LinearGradient from 'react-native-linear-gradient';
+import CustomTextInput from '../../components/atoms/custom-text-input';
+import CustomButton from '../../components/atoms/custom-button';
+import CustomPasswordTextInput from '../../components/atoms/custom-password-text-input';
 import {userLogin} from '../../firebase/authentication';
-import ForgotPassModal from '../../components/ForgotPassModal';
+import ForgotPassModal from '../../components/organisms/forgot-pass-modal';
 import {addUser} from '../../redux/reducers/userReducer';
 import {useDispatch, useSelector} from 'react-redux';
 import {LoginScreenStyles} from '../../styles/screens/LoginStyleSheet';
@@ -21,8 +22,10 @@ import CustomLoader from '../../components/CustomLoader';
 import {loginSaga} from '../../redux/reducers/authReducer';
 import remoteConfig from '@react-native-firebase/remote-config';
 import {Config} from '../../redux/reducers/configReducer';
+import {useTranslation} from 'react-i18next';
 
 const LoginScreen = ({navigation}: any) => {
+  const {t} = useTranslation();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [prevEmail, setPrevEmail] = useState('');
@@ -218,45 +221,53 @@ const LoginScreen = ({navigation}: any) => {
   if (!login.isLoggedIn) {
     return (
       <ScrollView style={LoginScreenStyles.container}>
-        <ImageBackground
-          style={LoginScreenStyles.background}
-          source={require('../../assets/LoginBackground1.png')}>
+        <LinearGradient
+          colors={['#3274AB', '#5E99C7']}
+          style={LoginScreenStyles.background}>
           <StatusBar backgroundColor="#3274AB" hidden={false} />
           <View>
             <View style={LoginScreenStyles.subContainer}>
               <Text style={LoginScreenStyles.headertext}>
-                Signin to get started
+                {t('login.title')}
               </Text>
             </View>
             <View style={LoginScreenStyles.subContainer}>
               <Text style={LoginScreenStyles.text}>
-                Enter Your Corp email id and password to signin
+                {t('login.subtitle')}
               </Text>
             </View>
             <View style={LoginScreenStyles.input}>
               <CustomTextInput
-                label="Capgemini Mail ID"
+                label={t('login.emailLabel')}
                 updateValue={updateEmail}
                 error={
                   error === 'Wrong Email' ||
                   error === 'No Email' ||
                   error === 'No Both'
-                }></CustomTextInput>
+                }
+                accessibilityLabel={t('login.emailLabel')}
+                />
               <>{renderEmailError()}</>
             </View>
             <View>
               <CustomPasswordTextInput
-                label="Password"
+                label={t('login.passwordLabel')}
                 updateValue={updatePassword}
                 error={
                   error === 'Wrong Password' ||
                   error === 'No Password' ||
                   error === 'No Both'
-                }></CustomPasswordTextInput>
+                }
+                accessibilityLabel={t('login.passwordLabel')}
+                />
               <>{renderPasswordError()}</>
             </View>
-            <TouchableOpacity onPress={() => changeModalVisibility(true)}>
-              <Text style={LoginScreenStyles.fpText}>Forgot Password?</Text>
+            <TouchableOpacity
+              onPress={() => changeModalVisibility(true)}
+              accessibilityRole="link"
+              accessibilityLabel={t('login.forgotPassword')}
+              >
+              <Text style={LoginScreenStyles.fpText}>{t('login.forgotPassword')}</Text>
               <Modal
                 transparent={true}
                 animationType="slide"
@@ -270,25 +281,28 @@ const LoginScreen = ({navigation}: any) => {
             <View style={LoginScreenStyles.button}>
               {change == true && (
                 <CustomButton
-                  text="Sign In"
+                  text={t('login.signInButton')}
                   onPress={() => {
                     setClick(true);
                   }}
                   backgroundColor={Configure.primaryAffiramtionButtonColor}
-                  textColor="white"></CustomButton>
+                  textColor="white"
+                  accessibilityLabel={t('login.signInButton')}
+                  />
               )}
               {pressed == true && <CustomLoader />}
               {change == false && (
                 <CustomButton
-                  text="Sign In"
+                  text={t('login.signInButton')}
                   disabled
                   backgroundColor={Configure.primaryDisableduttonColor}
                   textColor="#979797"
+                  accessibilityLabel={t('login.signInButton')}
                 />
               )}
             </View>
           </View>
-        </ImageBackground>
+        </LinearGradient>
       </ScrollView>
     );
   } else {

@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { Text, View, StatusBar, Dimensions, Image, BackHandler } from 'react-native'
-import CustomButton from '../../components/CustomButton'
+import CustomButton from '../../components/atoms/custom-button'
+import EmployeeLogo from '../../components/atoms/icons/employee-logo'
 import { useDispatch, useSelector } from 'react-redux'
 import notifee from '@notifee/react-native';
 import { useIsFocused } from '@react-navigation/native'
@@ -90,7 +91,7 @@ const EmployeeHome = ({ navigation, route }: any) => {
         (!isLoading) ?
             <View style={EmployeeHomeStyles.container}>
                 <StatusBar backgroundColor='#3274AB' hidden={false} />
-                <Image style={EmployeeHomeStyles.image} source={require('../../assets/EmployeeLogo.png')} />
+                <EmployeeLogo style={EmployeeHomeStyles.image} />
                 <View style={{ marginTop: HEIGHT / 27 }}>
                     <View style={{ flexDirection: 'row', justifyContent: 'center' }}>
                         <Text style={EmployeeHomeStyles.text1}>Welcome, </Text>

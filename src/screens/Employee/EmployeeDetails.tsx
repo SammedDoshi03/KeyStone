@@ -1,6 +1,6 @@
 import { Alert, StatusBar, Text, ToastAndroid, View } from 'react-native'
 import React, { useEffect, useRef, useState } from 'react'
-import CustomButton from '../../components/CustomButton'
+import CustomButton from '../../components/atoms/custom-button'
 import { useDispatch, useSelector } from 'react-redux'
 import { removeUser, logout } from "../../redux/reducers/userReducer"
 import  EmployeeStyleSheet from '../../styles/screens/EmployeeStyleSheet'

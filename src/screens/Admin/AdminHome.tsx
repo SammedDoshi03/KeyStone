@@ -8,7 +8,8 @@ import {
   BackHandler,
 } from 'react-native';
 import React from 'react';
-import CustomButton from '../../components/CustomButton';
+import AdminLogo from '../../components/atoms/icons/admin-logo';
+import CustomButton from '../../components/atoms/custom-button';
 import { useEffect } from 'react';
 import { useState } from 'react';
 import {
@@ -147,7 +148,7 @@ const AdminHome = ({ navigation }: any) => {
     </View>
   ) : (
     <View style={AdminHomeStyles.container}>
-      <Image style={AdminHomeStyles.image} source={require('../../assets/AdminLogo.png')} />
+      <AdminLogo style={AdminHomeStyles.image} />
       <View style={AdminHomeStyles.mainContent}>
         <Text style={AdminHomeStyles.mainText}>
           Hello <Text style={AdminHomeStyles.mainText1}>{userData.split(' ').slice(0, 1).join(' ')}</Text>, welcome to Admin board. You can now add/remove/edit SPOC details with respect to location.</Text>
